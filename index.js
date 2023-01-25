@@ -1,10 +1,18 @@
 //this will be setting the dependencies needed for the html page
 const inquirer = require("inquirer");
 const fs = require("fs");
-const open = require("open");
-const { default: Choices } = require("inquirer/lib/objects/choices");
+const generate = require("./src/generateHTML");
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Employee = require('./lib/Employee');
+const Intern = require('./lib/intern');
+
+// const open = require("open");
+// const { default: Choices } = require("inquirer/lib/objects/choices");
 
 //This will be to generate the questions asked of the team and the manager
+//For id I changed this to 'badge' as part of my everyday in a work setting we use badge#
+//For Engineer this was changed to Dev Ops engineer based on continuous experience with engineers under this title
 function teamBio() {
   inquirer
     .prompt([
@@ -107,6 +115,11 @@ function managerQuestions(){
             name: "email",
             type: "input",
             message: "Manager's email:",
+          },
+          {
+            name: "office",
+            type: "input",
+            message: "Manager's cube number?:",
           }
     ])
     
@@ -114,7 +127,7 @@ function managerQuestions(){
 
 managerQuestions()
     .then((data) =>{
-        const lead = new lead(data.name, data.badge, data.email);
+        const lead = new lead(data.name, data.badge, data.email, data.office);
         team.splice(team.length-1, 0, manager.getHTML());
         teamBio();
     })
