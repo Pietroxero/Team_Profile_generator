@@ -5,12 +5,12 @@ describe ('Engineer test', () => {
         const engineer = new Engineer ('Beau Miller', '21', 'beaum@email.com', 'MyGitHub');
         expect (engineer.name).toEqual('Beau Miller');
         expect (engineer.badge).toEqual('21');
-        expect (intern.email).toEqual('beaum@email.com');
-        expect (intern.github).toEqual('USC');
-        expect(intern.getEducation()).toEqual(expect.stringContaining('USC'));
+        expect (engineer.email).toEqual('beaum@email.com');
+        expect (engineer.github).toEqual('MyGitHub');
+        expect(engineer.getEducation()).toEqual(expect.stringContaining('USC'));
 
         it('if successful will get the engineers role', () => {
-expect(intern.getJob()).toEqual(expect.stringContaining('Dev Ops Engineer'));
+expect(engineer.getJob()).toEqual(expect.stringContaining('Dev Ops Engineer'));
         });
     });
 //     it ('creates a corresponding class called badge', () => {
