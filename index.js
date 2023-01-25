@@ -130,7 +130,7 @@ const managerQuestions = () => {
 };
 
 const writeData = () => {
-    const data = generateMarkup(staffChart);
+    const data = generate(staffChart);
     writeToFile('./dist/index.html', data)
 }
 
