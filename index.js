@@ -150,5 +150,4 @@ init();
 
     
 
-//Here we have to print and have the html open
 
