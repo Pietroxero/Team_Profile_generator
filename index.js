@@ -4,27 +4,33 @@ const fs = require("fs");
 const generate = require("./src/generateHTML");
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
-const Employee = require('./lib/Employee');
+// const Employee = require('./lib/Employee');
 const Intern = require('./lib/intern');
 
 // const open = require("open");
 // const { default: Choices } = require("inquirer/lib/objects/choices");
 
+const staffChart = {
+    'manager': [],
+    'engineer': [],
+    'intern': []
+};
+
 //This will be to generate the questions asked of the team and the manager
 //For id I changed this to 'badge' as part of my everyday in a work setting we use badge#
 //For Engineer this was changed to Dev Ops engineer based on continuous experience with engineers under this title
-function teamBio() {
+const teamBio =() => {
   inquirer
     .prompt([
       {
         name: "roles",
         type: "list",
-        select: ["Dev Ops Engineer", "FTE", "Intern", "Temp to hire"],
+        select: ["Dev Ops Engineer", "Intern", "Finished building my team"],
         message: "What role is being added to you team?",
       },
     ])
-    .then((data) => {
-      if (data.role === "Dev Ops Engineer") {
+    .then(({choice}) => {
+      if (choice === "Dev Ops Engineer") {
         return inquirer.prompt([
           {
             name: "name",
@@ -49,13 +55,12 @@ function teamBio() {
             type: "input",
             message: "Dev Ops Engineer's email:",
           }
-        ]).then((data)=> {
-            let dev = new dev(data.name, data.badge, data.github, data.email);
-            team.splice(team.length-1, 0, engineer.HTML());
-            teamBio();
+        ]).then(({name, badge, email, github})=> {
+            staffChart.engineer.push(new Engineer (name, badge, email, github))
+            return teamBio();
         })
       }
-      if (data.role === 'Temp'){
+      else if (choice === 'Intern'){
         return inquirer.prompt([
             {
                 name: "name",
@@ -73,31 +78,26 @@ function teamBio() {
                 type: "input",
                 message: "Do they have School certifications",
               },
-              {
-    
-                name: "github",
-                type: "input",
-                message: "Temp Employee's Github Repo:",
-    
-                
-              },
+              
               {
                 name: "email",
                 type: "input",
                 message: "Temp Employee's email:",
               }
-        ]).then((data)=>{
-            let temp = new temp(data.name, data.badge, data.school, data.github, data.email);
-            team.splice(team.length-1, 0, temp.HTML());
-            teamBio();
+        ]).then(({name, badge, email, school})=>{
+            staffChart.intern.push(new Intern (name, badge, email, school))
+            return teamBio();
         })
       }
-      //return /print function needed
-    });
-}
+      else{
+        writeData();
+      }
+
+    })
+};
 
 //Here we will be building the manager prompt questions.
-function managerQuestions(){
+const managerQuestions = () => {
     return inquirer.prompt([
         //Similar to the prompt above we can rinse and repeat the arrays for questions.
         {
@@ -120,17 +120,35 @@ function managerQuestions(){
             name: "office",
             type: "input",
             message: "Manager's cube number?:",
-          }
-    ])
+          }])
+          .then(({name, badge, email, office}) =>{
+            staffChart.manager.push(new Manager (name, badge, email, office))
+            teamBio();
+
+        })
     
+};
+
+const writeData = () => {
+    const data = generateMarkup(staffChart);
+    writeToFile('./dist/index.html', data)
 }
 
-managerQuestions()
-    .then((data) =>{
-        const lead = new lead(data.name, data.badge, data.email, data.office);
-        team.splice(team.length-1, 0, manager.getHTML());
-        teamBio();
-    })
+//function that will initialize the app
+const init = async () => {
+    try {
+        //calling the const for manager questions to prompt manager user for team information
+        managerQuestions()
+
+    } catch (err) {
+
+    }
+};
+
+// function to initialize app
+init();
+
+    
 
 //Here we have to print and have the html open
 
