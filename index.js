@@ -29,8 +29,8 @@ const teamBio =() => {
         message: "What role is being added to you team?",
       },
     ])
-    .then(({choice}) => {
-      if (choice === "Dev Ops Engineer") {
+    .then(({select}) => {
+      if (select === "Dev Ops Engineer") {
         return inquirer.prompt([
           {
             name: "name",
@@ -60,7 +60,7 @@ const teamBio =() => {
             return teamBio();
         })
       }
-      else if (choice === 'Intern'){
+      else if (select === 'Intern'){
         return inquirer.prompt([
             {
                 name: "name",
