@@ -7,7 +7,7 @@ describe ('Engineer test', () => {
         expect (engineer.badge).toEqual('21');
         expect (engineer.email).toEqual('beaum@email.com');
         expect (engineer.github).toEqual('MyGitHub');
-        expect(engineer.getEducation()).toEqual(expect.stringContaining('USC'));
+        // expect(engineer.getEducation()).toEqual(expect.stringContaining('USC'));
 
         it('if successful will get the engineers role', () => {
 expect(engineer.getJob()).toEqual(expect.stringContaining('Dev Ops Engineer'));

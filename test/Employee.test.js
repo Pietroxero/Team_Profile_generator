@@ -7,7 +7,7 @@ describe ('Engineer test', () => {
         expect (employee.badge).toEqual('21');
 
         it('if successful will get the engineers role', () => {
-expect(intern.getJob()).toEqual(expect.stringContaining('Employee'));
+expect(employee.getJob()).toEqual(expect.stringContaining('Employee'));
         });
     });
 });
