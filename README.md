@@ -32,6 +32,8 @@ THEN I exit the application, and the HTML is generated.
 ## Table of contents
 Project title, Description, Screenshots, user story, acceptance criteria, screenshots, deployment.
 
+## Screenshot (Sample)
+![Screenshot](./img/Screenshot%202023-01-26%20230301.png)
 
 
 ## Deployment
