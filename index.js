@@ -29,8 +29,8 @@ const teamBio =() => {
         message: "What role is being added to you team?",
       },
     ])
-    .then(({choices}) => {
-      if (choices === "Dev Ops Engineer") {
+    .then(({roles}) => {
+      if (roles === "Dev Ops Engineer") {
         return inquirer.prompt([
           {
             name: "name",
@@ -60,7 +60,7 @@ const teamBio =() => {
             return teamBio();
         })
       }
-      else if (choices === 'Intern'){
+      else if (roles === 'Intern'){
         return inquirer.prompt([
             {
                 name: "name",
@@ -89,7 +89,7 @@ const teamBio =() => {
             return teamBio();
         })
       }
-      else{
+      else if(roles === "Finished building my team"){
         writeData();
       }
 
@@ -131,7 +131,9 @@ const managerQuestions = () => {
 
 const writeData = () => {
     const data = generate(staffChart);
-    writeToFile('./dist/index.html', data)
+    fs.writeFile('./dist/index.html', data, () => {
+      
+    })
 }
 
 //function that will initialize the app
