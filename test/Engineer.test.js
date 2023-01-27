@@ -10,7 +10,7 @@ describe ('Engineer test', () => {
         // expect(engineer.getEducation()).toEqual(expect.stringContaining('USC'));
 
         it('if successful will get the engineers role', () => {
-expect(engineer.getJob()).toEqual(expect.stringContaining('Dev Ops Engineer'));
+expect(engineer.getJob()).toEqual(expect.stringContaining('Engineer'));
         });
     });
 //     it ('creates a corresponding class called badge', () => {

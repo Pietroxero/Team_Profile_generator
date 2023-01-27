@@ -1,6 +1,9 @@
 # Team_Profile_generator
 
 ## Description
+The purpose of the assignment was to create a question prompt in the CLI and from there based on answers generate
+an HTML page that should a work team's personnel structure, Manager, Engineer(s), Intern(s).
+
 
 ## User Stories
 AS A manager
@@ -29,9 +32,9 @@ THEN I exit the application, and the HTML is generated.
 ## Table of contents
 Project title, Description, Screenshots, user story, acceptance criteria, screenshots, deployment.
 
-## Screenshots
+
 
 ## Deployment
-Repo:
+Repo:(https://github.com/Pietroxero/Team_Profile_generator)
 
 Video Link: 
