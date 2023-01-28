@@ -7,9 +7,6 @@ const Engineer = require('./lib/Engineer');
 // const Employee = require('./lib/Employee');
 const Intern = require('./lib/intern');
 
-// const open = require("open");
-// const { default: Choices } = require("inquirer/lib/objects/choices");
-
 const staffChart = {
     'manager': [],
     'engineer': [],
@@ -132,7 +129,7 @@ const managerQuestions = () => {
 const writeData = () => {
     const data = generate(staffChart);
     fs.writeFile('./dist/index.html', data, () => {
-      
+
     })
 }
 

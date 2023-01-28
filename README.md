@@ -39,4 +39,4 @@ Project title, Description, Screenshots, user story, acceptance criteria, screen
 ## Deployment
 Repo:(https://github.com/Pietroxero/Team_Profile_generator)
 
-Video Link: 
+Video Link: (https://drive.google.com/file/d/1BmScM_ziOJmObQu_vjbqlBWZkcztfgp9/view)
